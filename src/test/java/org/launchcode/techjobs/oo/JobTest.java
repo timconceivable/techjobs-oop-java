@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 import org.junit.Test;
+import static java.lang.System.lineSeparator;
 import static org.junit.Assert.*;
 
 
@@ -15,7 +16,7 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
         Job aJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        assertTrue( aJob.getName().class = String );
+
         assertEquals(aJob.getName(), "Product tester");
         assertEquals(aJob.getEmployer().toString(), "ACME");
         assertEquals(aJob.getLocation().toString(), "Desert");
@@ -33,6 +34,15 @@ public class JobTest {
     public void testJobsForEquality() {
         Job jobOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job jobTwo = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
         assertFalse(jobOne.equals(jobTwo));
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job strJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertEquals(strJob.toString().charAt(0), lineSeparator() );
+        assertEquals(strJob.toString().charAt(-1), lineSeparator() );
     }
 }
