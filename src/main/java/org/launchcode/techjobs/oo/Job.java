@@ -4,7 +4,7 @@ import static java.lang.System.lineSeparator;
 
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String name;
     private Employer employer;
@@ -30,12 +30,13 @@ public class Job {
 
     @Override
     public String toString() {
-        return lineSeparator() + String.format("ID: %s\n" +
-            "Name: %s\nEmployer: %s\n" +
-            "Location: %s\n" +
-            "Position Type: %s\n" +
-            "Core Competency: %s\n",
-            this.id, this.name, this.employer, this.location, this.positionType, this.coreCompetency) + lineSeparator();
+        return (
+            "\nID: " + this.id +
+            "\nName: " + this.name +
+            "\nEmployer: " + this.employer +
+            "\nLocation: " + this.location +
+            "\nPosition Type: " + this.positionType +
+            "\nCore Competency: " + this.coreCompetency + "\n");
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields match.

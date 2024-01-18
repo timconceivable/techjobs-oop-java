@@ -3,7 +3,6 @@ import org.junit.Test;
 import static java.lang.System.lineSeparator;
 import static org.junit.Assert.*;
 
-
 public class JobTest {
     //TODO: Create your unit tests here
     @Test
@@ -40,9 +39,25 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
-        Job strJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
-        assertEquals(strJob.toString().charAt(0), lineSeparator() );
-        assertEquals(strJob.toString().charAt(-1), lineSeparator() );
+        Job theJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String strJob = theJob.toString();
+//        String[] jobArray = strJob.toString().split(lineSeparator());
+//        assertEquals(jobArray[0], " ");
+//        assertEquals(jobArray[jobArray.length-1], " ");
+//        assertTrue(strJob.toString().startsWith("\n"));
+//        assertTrue(strJob.toString().endsWith("\n"));
+        assertEquals( String.valueOf(strJob.charAt(0)), "\n" );
+        assertEquals( String.valueOf(strJob.charAt(strJob.length()-1)), "\n" );
     }
+
+    //TODO: more tests
+//    @Test
+//    public void testToStringContainsCorrectLabelsAndData() {
+//
+//    }
+//
+//    @Test
+//    public void testToStringHandlesEmptyField() {
+//
+//    }
 }
