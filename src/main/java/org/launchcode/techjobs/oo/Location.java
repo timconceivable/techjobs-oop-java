@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Location {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String value;
 
@@ -27,10 +27,10 @@ public class Location {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Location)) return false;
-        Location location = (Location) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Location)) return false;
+        Location location = (Location) obj;
         return getId() == location.getId();
     }
 

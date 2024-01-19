@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class CoreCompetency {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String value;
 
@@ -26,11 +26,11 @@ public class CoreCompetency {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CoreCompetency)) return false;
-        CoreCompetency that = (CoreCompetency) o;
-        return id == that.id;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof CoreCompetency)) return false;
+        CoreCompetency skill = (CoreCompetency) obj;
+        return id == skill.id;
     }
 
     @Override

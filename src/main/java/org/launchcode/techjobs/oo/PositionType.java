@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class PositionType {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String value;
 
@@ -28,11 +28,11 @@ public class PositionType {
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when their id fields match.
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PositionType that = (PositionType) o;
-        return id == that.id && Objects.equals(value, that.value);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        PositionType position = (PositionType) obj;
+        return id == position.id && Objects.equals(value, position.value);
     }
 
     @Override

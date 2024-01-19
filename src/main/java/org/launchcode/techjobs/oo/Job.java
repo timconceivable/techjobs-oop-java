@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.oo;
 import java.util.Objects;
-import static java.lang.System.lineSeparator;
+import static java.util.Objects.isNull;
+
 
 public class Job {
 
@@ -30,21 +31,35 @@ public class Job {
 
     @Override
     public String toString() {
-        return (
-            "\nID: " + this.id +
-            "\nName: " + this.name +
-            "\nEmployer: " + this.employer +
-            "\nLocation: " + this.location +
-            "\nPosition Type: " + this.positionType +
-            "\nCore Competency: " + this.coreCompetency + "\n");
+//        Field[] jobFields = this.getClass().getDeclaredFields();
+//        for (Field f : jobFields) {
+//            if (isNull(f) || f.toString().isBlank()) {
+//                try {
+//                    f.get(this.getClass()).setValue("Data not available");
+//                    throw new IllegalAccessException("Access Denied");
+//                }
+//                catch (IllegalAccessException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+        if ( isNull(name) && isNull(employer) && isNull(location) && isNull(positionType) && isNull(coreCompetency) ) {
+            return "OOPS! This job does not seem to exist.";
+        } else return (
+            "\nID: " + id +
+            "\nName: " + ( (isNull(name) || name.isBlank()) ? "Data not available" : name ) +
+            "\nEmployer: " + ( (isNull(employer) || employer.toString().isBlank()) ? "Data not available" : employer ) +
+            "\nLocation: " + ( (isNull(location) || location.toString().isBlank()) ? "Data not available" : location ) +
+            "\nPosition Type: " + ( (isNull(positionType) || positionType.toString().isBlank()) ? "Data not available" : positionType ) +
+            "\nCore Competency: " + ( (isNull(coreCompetency) || coreCompetency.toString().isBlank()) ? "Data not available" : coreCompetency ) + "\n");
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields match.
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Job job = (Job) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Job job = (Job) obj;
         return id == job.id;
     }
 

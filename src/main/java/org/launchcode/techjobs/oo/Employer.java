@@ -3,7 +3,7 @@ import java.util.Objects;
 
 public class Employer {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
     private String value;
 
@@ -25,10 +25,10 @@ public class Employer {
     }
 
     @Override
-    public boolean equals(Object o) {  // Two objects are equal if they have the same id.
-        if (this == o) return true;
-        if (!(o instanceof Employer)) return false;
-        Employer employer = (Employer) o;
+    public boolean equals(Object obj) {  // Two objects are equal if they have the same id.
+        if (this == obj) return true;
+        if (!(obj instanceof Employer)) return false;
+        Employer employer = (Employer) obj;
         return getId() == employer.getId();
     }
 
